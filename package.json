@@ -1,0 +1,12 @@
+{
+  "name": "Slack-Twitter",
+  "version": "0.0.1",
+  "description": "A server to post tweets from your timline to a designated Slack channel.",
+  "author": "Richard Eriksson <richard@justagwailo.com>",
+  "dependencies": {
+    "twitter": "1.2.1",
+    "twitter-text": "1.11.0",
+    "slack-client": "https://github.com/sillygwailo/node-slack-client/tarball/master"
+  }
+}
+    
