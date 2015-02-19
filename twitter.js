@@ -1,6 +1,6 @@
 module.exports = {
-      consumer_key:         'yourTwitterConsumerKeyHere'
-    , consumer_secret:      'yourTwitterConsumerSecretHere'
-    , access_token_key:     'yourTwitterAccessTokenKeyHere'
-    , access_token_secret:  'yourAccessTokenSecretHere'
+      consumer_key:         process.env.TWITTER_CONSUMER_KEY
+    , consumer_secret:      process.env.TWITTER_CONSUMER_SECRET
+    , access_token_key:     process.env.TWITTER_ACCESS_TOKEN_KEY
+    , access_token_secret:  process.env.TWITTER_ACCESS_TOKEN_SECRET
 }

@@ -1,6 +1,6 @@
 module.exports = {
-  token: "yourSlackBotTokenHere",
+  token: process.env.SLACK_TOKEN,
   autoReconnect: true,
   autoMark: true,
-  channel: "yourChannelHere"
+  channel: process.env.SLACK_CHANNEL
 }
