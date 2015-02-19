@@ -6,7 +6,7 @@ var U = require('url');
 var options = {
 }
 
-var T = new Twit(require(__dirname + '/twitter-sillygwailo.js'));
+var T = new Twit(require(__dirname + '/twitter.js'));
 
 var slackOptions = require(__dirname + '/slack.js');
 
