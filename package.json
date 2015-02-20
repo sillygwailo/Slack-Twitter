@@ -6,7 +6,7 @@
   "dependencies": {
     "twitter": "1.2.1",
     "twitter-text": "1.11.0",
-    "slack-client": "https://github.com/sillygwailo/node-slack-client/tarball/master"
+    "slack-client": "1.3.1"
   }
 }
     
