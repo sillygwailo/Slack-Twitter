@@ -1,0 +1,30 @@
+{
+  "name": "Slack-Twitter",
+  "description": "Node.js middleware to create a reading and writing Twitter client out of Slack.",
+  "keywords": [
+    "Twitter",
+    "Slack"
+  ],
+  "website": "http://notes.justagwailo.com/twitter/slack",
+  "repository": "https://github.com/sillygwailo/Slack-Twitter",
+  "env": {
+    "TWITTER_ACCESS_TOKEN_KEY": {
+      "description": "Twitter access token key, available from http://apps.twitter.com/"
+    },
+    "TWITTER_ACCESS_TOKEN_SECRET=": {
+      "description": "Twitter access token secret, available from http://apps.twitter.com/"
+    },
+    "TWITTER_CONSUMER_KEY": {
+      "description": "Twitter consumer key, available from http://apps.twitter.com/"
+    },
+    "TWITTER_CONSUMER_SECRET": {
+      "description": "Twitter consumer secret, available from http://apps.twitter.com/"        
+    },
+    "SLACK_TOKEN": {
+      "description": "Token for the bot, available from  https://my.slack.com/services/new and under 'DIY Integrations & Customizations' click the 'Add' button."
+    },
+    "SLACK_CHANNEL": {
+      "description": "Channel in Slack to post tweets to and from."
+    }
+  }
+}
