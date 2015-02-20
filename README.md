@@ -9,6 +9,12 @@ Installation
 5. Set your environment variables. See the section below.
 6. Start the bot! Use [PM2](https://github.com/Unitech/pm2) or [forever](https://github.com/foreverjs/forever) or something that will daemonize the bot.
 
+Or you could deploy it to Heroku by clicking the button:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/sillygwailo/Slack-Twitter)
+
+**You still need to follow steps #1-4 in the above instructions before clicking the button.**
+
 Warning: All messages under 140 characters will get posted to Twitter. Only use a channel designated to post tweets from.
 
 Environment Variables
