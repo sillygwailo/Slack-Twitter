@@ -49,6 +49,6 @@ Usage
 Known Issues
 ====
 
+* Starring and unstarring won't fave or unfave a tweet until Slack implements this in their client. A pull request is pending.
 * A memory leak. You may have to manually restart the Node.js bot if tweets stop appearing or tweets no longer get sent from your Slack channel.
 * Starring a retweet does not currently work.
-* This relies on a fork of Slack's official Node.js API client, only to add starring and unstarring events. Pull request forthcoming.
