@@ -1,1 +1,1 @@
-web: node slack-twitter.js
+node: node slack-twitter.js
