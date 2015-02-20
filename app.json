@@ -11,7 +11,7 @@
     "TWITTER_ACCESS_TOKEN_KEY": {
       "description": "Twitter access token key, available from http://apps.twitter.com/"
     },
-    "TWITTER_ACCESS_TOKEN_SECRET=": {
+    "TWITTER_ACCESS_TOKEN_SECRET": {
       "description": "Twitter access token secret, available from http://apps.twitter.com/"
     },
     "TWITTER_CONSUMER_KEY": {
