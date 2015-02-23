@@ -17,6 +17,6 @@
   },
   "scripts": {
     "postinstall": "echo postinstall time; cd ./node_modules/slack-client; npm install; ../grunt-cli/bin/grunt prepublish"
-  },
+  }
 }
     
