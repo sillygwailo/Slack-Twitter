@@ -6,12 +6,6 @@
   "dependencies": {
     "twitter": "1.2.1",
     "twitter-text": "1.11.0",
-    "slack-client": "https://github.com/sillygwailo/node-slack-client/tarball/heroku-build",
-    "grunt": "^0.4.5",
-    "grunt-cli": "*"
-  },
-  "scripts": {
-    "postinstall": "echo postinstall time; cd ./node_modules/slack-client; npm install; ../grunt-cli/bin/grunt prepublish"
+    "slack-client": "1.4.0"
   }
 }
-    
