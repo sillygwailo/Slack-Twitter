@@ -89,18 +89,22 @@ T.stream('user', function(stream) {
 });
 
 Cl.on('star_added', function(event) {
-  path = U.parse(event.item.message.attachments[0].author_link).path.split('/'); 
-  T.post('favorites/create', { id: path[3] }, function(err, data, response) {
-    console.log(err);
-  });
-  path = null;
+  if (event.item.type == 'message') {
+    path = U.parse(event.item.message.attachments[0].author_link).path.split('/');
+    T.post('favorites/create', { id: path[3] }, function(err, data, response) {
+      console.log(err);
+    });
+    path = null;
+  }
 });
 Cl.on('star_removed', function(event) {
-  path = U.parse(event.item.message.attachments[0].author_link).path.split('/'); 
-  T.post('favorites/destroy', { id: path[3] }, function(err, data, response) {
-    console.log(err);
-  });
-  path = null;
+  if (event.item.type == 'message') {
+    path = U.parse(event.item.message.attachments[0].author_link).path.split('/');
+    T.post('favorites/destroy', { id: path[3] }, function(err, data, response) {
+      console.log(err);
+    });
+    path = null;
+  }
 });
 Cl.on('message', function(message) {
   if (message.subtype != 'message_changed' && message.subtype != 'bot_message') {
