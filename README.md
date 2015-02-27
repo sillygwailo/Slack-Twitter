@@ -20,7 +20,7 @@ Warning: All messages under 140 characters will get posted to Twitter. Only use 
 Environment Variables
 ====
 
-This bot uses environment variables to store tokens.
+This bot uses environment variables to store Slack and Twitter tokens. If you want to run this software locally, use the following as a starting point.
 
     export SLACK_CHANNEL=yourSlackChannelHere
     export SLACK_TOKEN=yourSlackTokenHere
@@ -29,7 +29,7 @@ This bot uses environment variables to store tokens.
     export TWITTER_ACCESS_TOKEN_KEY=yourTwitterAccessTokenKeyHere
     export TWITTER_ACCESS_TOKEN_SECRET=yourTwitterAccessTokenSecretHere
 
-If you're deploying to Heroku, use the following:
+If you're deploying to Heroku, press the Deploy to Heroku button above and you can punch the tokens in the form. If you're deploying from the command line, use the following:
 
     heroku config:set SLACK_CHANNEL=yourSlackChannelHere
     heroku config:set SLACK_TOKEN=yourSlackTokenHere
