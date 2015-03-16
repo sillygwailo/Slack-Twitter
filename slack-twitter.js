@@ -107,6 +107,7 @@ Cl.on('star_removed', function(event) {
   }
 });
 Cl.on('message', function(message) {
+  console.log(message.type);
   console.log(message.subtype);
   if (message.subtype != 'message_changed' && message.subtype != 'bot_message') {
     if (TwitterText.getTweetLength(message.text) <= 140) {
