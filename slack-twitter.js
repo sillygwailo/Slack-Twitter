@@ -107,11 +107,10 @@ Cl.on('star_removed', function(event) {
   }
 });
 Cl.on('message', function(message) {
-  console.log(message);
+  console.log(message.subtype);
   if (message.subtype != 'message_changed' && message.subtype != 'bot_message') {
     if (TwitterText.getTweetLength(message.text) <= 140) {
       T.post('statuses/update', { status:removeFormatting(message.text) }, function(err, data, response) {
-    	console.log(err);
       });
     }
     else {
