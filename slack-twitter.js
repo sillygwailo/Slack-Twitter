@@ -72,7 +72,7 @@ Cl.on('open', function() {
 
 T.stream('user', function(stream) {
   stream.on('data', function(tweet) {
-    channel = Cl.getChannelGroupOrDMByName(slackOptions.channel);
+    channel = Cl.getChannelByName(slackOptions.timeline_channel);
     if (typeof(tweet.retweeted_status) != 'undefined') {
       channel.send('https://twitter.com/' + tweet.retweeted_status.user.screen_name + '/status/' + tweet.retweeted_status.id_str + ' RT by https://twitter.com/' + tweet.user.screen_name);
     }
@@ -108,13 +108,14 @@ Cl.on('star_removed', function(event) {
 });
 Cl.on('message', function(message) {
   console.log(message);
-  if (message.subtype != 'message_changed' && message.subtype != 'bot_message') {
+  the_channel = Cl.getChannelByName(slackOptions.post_channel);
+  if (message.channel == the_channel.id && (message.subtype != 'message_changed' && message.subtype != 'bot_message')) {
     if (TwitterText.getTweetLength(message.text) <= 140) {
       T.post('statuses/update', { status:removeFormatting(message.text) }, function(err, data, response) {
       });
     }
     else {
-      channel = Cl.getChannelGroupOrDMByID(message.channel);
+      channel = Cl.getChannelByID(message.channel);
       channel.send("The tweet was too long! Character count: " + TwitterText.getTweetLength(message.text));
       channel = null;
     } // If message longer than 140 character
