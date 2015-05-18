@@ -1,7 +1,9 @@
 Installation
 ====
 
-1. Create a channel Slack channel. Name it something obvious like 'twitter'.
+1. Create two channels in Slack.
+  1. Name the channel for your timeline something obvious like 'twitter_timeiline' 
+  2. Name the channel for posting to Twitter something obvious like 'twitter_post'
 2. Get a Slack bot account. Visit https://my.slack.com/services/new and under "DIY Integrations & Customizations" click the "Add" button. Once you create this bot (name it something obvious like "twitter_bot") you will get an API token.
 2. Invite the bot to the channel you created in Step #1. To do that, go to the #general channel where the bot is initially invited to. Click their avatar, and then "Invite to a channel...".
 3. Associate a Twitter account with your Slack team. This is necessary so that Slack will unfurl the tweets, that is, it will show tweet text (and images that people tweet) from this account's timeline. Visit https://my.slack.com/services and then the "Authentications" tab to set this up.
@@ -22,7 +24,8 @@ Environment Variables
 
 This bot uses environment variables to store Slack and Twitter tokens. If you want to run this software locally, use the following as a starting point.
 
-    export SLACK_CHANNEL=yourSlackChannelHere
+    export SLACK_POST_CHANNEL=yourSlackChannelforPostingtoTwitterHere
+    export SLACK_TIMELINE_CHANNEL=yourSlackChannelforReadingtheTwitterTimeline
     export SLACK_TOKEN=yourSlackTokenHere
     export TWITTER_CONSUMER_KEY=yourTwitterConsumerKeyHere
     export TWITTER_CONSUMER_SECRET=yourTwitterConsumerSecretHere
@@ -31,7 +34,8 @@ This bot uses environment variables to store Slack and Twitter tokens. If you wa
 
 If you're deploying to Heroku, press the Deploy to Heroku button above and you can punch the tokens in the form. If you're deploying from the command line, use the following:
 
-    heroku config:set SLACK_CHANNEL=yourSlackChannelHere
+    heroku config:set SLACK_POST_CHANNEL=yourSlackChannelforPostingtoTwitterHere
+    heroku config:set SLACK_TIMELINE_CHANNEL=yourSlackChannelforReadingtheTwitterTimeline
     heroku config:set SLACK_TOKEN=yourSlackTokenHere
     heroku config:set TWITTER_CONSUMER_KEY=yourTwitterConsumerKeyHere
     heroku config:set TWITTER_CONSUMER_SECRET=yourTwitterConsumerSecretHere 
@@ -41,10 +45,10 @@ If you're deploying to Heroku, press the Deploy to Heroku button above and you c
 Usage
 ====
 
-1. Posting messages to the channel will evaluate whether the tweet meets Twitter's definition of 140 characters. That means that URLs are compressed down (and possibly up?) to be either 23 or 24 characters in length. You don't have to short URLs. (You don't have to in general either, not even for analytics, since http://analytics.twitter.com/ handles that now.)
+1. Posting messages to the 'twitter_post' channel will evaluate whether the tweet meets Twitter's definition of 140 characters. That means that URLs are compressed down (and possibly up?) to be either 23 or 24 characters in length. You don't have to short URLs. (You don't have to in general either, not even for analytics, since http://analytics.twitter.com/ handles that now.)
 2. Faving and unfaving. Starring a tweet in Slack will fave that tweet on Twitter. Unstarring it will unfave it.
-3. Retweets are handled by taking the URL of the retweeted tweet and saying who it was retweeted by.
-4. No replies or retweeting is currently possible. Use a client for that. On the Slack mobile app, you can specify which Twitter app to use. If you know what you're doing with Automator on Mac OS X, you can add [a service to open a URL in Tweetbot](https://github.com/sillygwailo/Open-URL-in-Tweetbot.workflow)
+3. Retweets in a timeline are handled by taking the URL of the retweeted tweet and saying who it was retweeted by.
+4. No replies or retweeting is currently possible in the 'twitter_post' channel. Use a client for that. In the Slack mobile app, you can specify which Twitter app to use. If you know what you're doing with Automator on Mac OS X, you can add [a service to open a URL in Tweetbot](https://github.com/sillygwailo/Open-URL-in-Tweetbot.workflow)
 
 Known Issues
 ====
