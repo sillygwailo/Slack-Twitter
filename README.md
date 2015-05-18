@@ -5,8 +5,10 @@ Installation
   1. Name the channel for your timeline something obvious like 'twitter_timeiline' 
   2. Name the channel for posting to Twitter something obvious like 'twitter_post'
 2. Get a Slack bot account. Visit https://my.slack.com/services/new and under "DIY Integrations & Customizations" click the "Add" button. Once you create this bot (name it something obvious like "twitter_bot") you will get an API token.
-2. Invite the bot to the channel you created in Step #1. To do that, go to the #general channel where the bot is initially invited to. Click their avatar, and then "Invite to a channel...".
-3. Associate a Twitter account with your Slack team. This is necessary so that Slack will unfurl the tweets, that is, it will show tweet text (and images that people tweet) from this account's timeline. Visit https://my.slack.com/services and then the "Authentications" tab to set this up.
+2. Invite the bot to the channels you created in step #1. To do that, go to each channel and, in the top
+    drop-down for the channel, click "Invite others to this channel..." and select your bot created in
+    step #2.
+3. Associate a Twitter account with your Slack team. This is necessary so that Slack will unfurl the tweets, that is, it will show tweet text (and images that people tweet) from this account's timeline. Visit https://my.slack.com/services/twitter and then the "Authentications" tab to set this up.
 4. Login to the Twitter website Application Management website at https://apps.twitter.com/ with the Twitter account that you want to post tweets to from Slack. (It can be a different Twitter account than the one in step #3.) Click "Create New App". Make sure to give it read and write permissions.
 5. Set your environment variables. See the section below.
 6. Start the bot! Use [PM2](https://github.com/Unitech/pm2) or [forever](https://github.com/foreverjs/forever) or something that will daemonize the bot.
