@@ -2,13 +2,14 @@ var S = require('slack-client');
 var Twit = require('twitter');
 var TwitterText = require('twitter-text');
 var U = require('url');
-
-var options = {
-}
-
 var T = new Twit(require(__dirname + '/twitter.js'));
-
-var slackOptions = require(__dirname + '/slack.js');
+var slackOptions = {
+  token: process.env.SLACK_TOKEN,
+  autoReconnect: true,
+  autoMark: true,
+  post_channel: process.env.SLACK_POST_CHANNEL,
+  timeline_channel: process.env.SLACK_TIMELINE_CHANNEL
+}
 
 var Cl = new S(slackOptions.token, slackOptions.autoReconnect, slackOptions.autoMark);
 
