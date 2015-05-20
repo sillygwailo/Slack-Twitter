@@ -85,15 +85,17 @@ T.stream('user', function(stream) {
     channel = null;
   });
   stream.on('error', function(error) {
-    console.log(error);
+    console.log('Twitter stream error: ' + error);
   });
 });
 
 Cl.on('star_added', function(event) {
   if (event.item.type == 'message') {
     path = U.parse(event.item.message.attachments[0].author_link).path.split('/');
-    T.post('favorites/create', { id: path[3] }, function(err, data, response) {
-      console.log(err);
+    T.post('favorites/create', { id: path[3] }, function(error, data, response) {
+      if (err) {
+        console.log('Error faving tweet: ' + error);
+      }
     });
     path = null;
   }
@@ -101,14 +103,15 @@ Cl.on('star_added', function(event) {
 Cl.on('star_removed', function(event) {
   if (event.item.type == 'message') {
     path = U.parse(event.item.message.attachments[0].author_link).path.split('/');
-    T.post('favorites/destroy', { id: path[3] }, function(err, data, response) {
-      console.log(err);
+    T.post('favorites/destroy', { id: path[3] }, function(error, data, response) {
+      if (err) {
+        console.log('Error unfaving tweet: ' + error);
+      }
     });
     path = null;
   }
 });
 Cl.on('message', function(message) {
-  console.log(message);
   the_channel = Cl.getChannelByName(slackOptions.post_channel);
   if (message.channel == the_channel.id && (message.subtype != 'message_changed' && message.subtype != 'bot_message')) {
     if (TwitterText.getTweetLength(message.text) <= 140) {
