@@ -3,6 +3,10 @@
   "version": "0.0.2",
   "description": "A server to post tweets from your timline to a designated Slack channel.",
   "author": "Richard Eriksson <richard@justagwailo.com>",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/sillygwailo/Slack-Twitter.git"
+  },
   "dependencies": {
     "twitter": "1.2.1",
     "twitter-text": "1.11.0",
