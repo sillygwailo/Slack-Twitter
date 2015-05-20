@@ -13,7 +13,7 @@ var slackOptions = {
 
 var Cl = new S(slackOptions.token, slackOptions.autoReconnect, slackOptions.autoMark);
 
-fs = require('fs');
+var fs = require('fs');
 
 Cl.login();
 Cl.on('open', function() {
@@ -22,7 +22,7 @@ Cl.on('open', function() {
 
 T.stream('user', function(stream) {
   stream.on('data', function(tweet) {
-    channel = Cl.getChannelByName(slackOptions.timeline_channel);
+    var channel = Cl.getChannelByName(slackOptions.timeline_channel);
     if (typeof(tweet.retweeted_status) != 'undefined') {
       channel.send('https://twitter.com/' + tweet.retweeted_status.user.screen_name + '/status/' + tweet.retweeted_status.id_str + ' RT by https://twitter.com/' + tweet.user.screen_name);
     }
