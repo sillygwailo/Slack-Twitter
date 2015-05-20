@@ -2,7 +2,16 @@ var S = require('slack-client');
 var Twit = require('twitter');
 var TwitterText = require('twitter-text');
 var U = require('url');
-var T = new Twit(require(__dirname + '/twitter.js'));
+
+var twitterOptions = {
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+}
+
+var T = new Twit(twitterOptions);
+
 var slackOptions = {
   token: process.env.SLACK_TOKEN,
   autoReconnect: true,
