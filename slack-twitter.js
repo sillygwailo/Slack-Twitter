@@ -81,16 +81,14 @@ Cl.on('star_removed', function(event) {
 Cl.on('message', function(message) {
   the_channel = Cl.getChannelByName(slackOptions.post_channel);
   if (message.channel == the_channel.id && (message.subtype != 'message_changed' && message.subtype != 'bot_message')) {
-    fs.readdir(__dirname + '/plugins', function (error, files) {
+    fs.readdir(__dirname + '/plugins/filter', function (error, files) {
       text = message.text;
       files.forEach(function (file) {
-        require(__dirname + '/plugins/' + file);
+        require(__dirname + '/plugins/filter/' + file);
       });
-      plugins = require(__dirname + '/plugins.js');
-      plugins.actions.forEach(function(action) {
-        if (action.type == 'filter') {
-          text = action.execute(text);
-        }
+      filters = require(__dirname + '/plugins/filters.js').filters;
+      filters.forEach(function(filter) {
+        text = filter.execute(text);
       });
       if (TwitterText.getTweetLength(text) <= 140) {
         T.post('statuses/update', { status: text }, function(error, data, response) {
