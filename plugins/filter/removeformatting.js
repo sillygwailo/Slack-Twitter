@@ -3,7 +3,6 @@ var filters = require(__dirname + '/../filters.js');
 filter = {
   name: 'removeformatting',
   description: 'Use Slack\'s own alorithm to remove formatting from a message',
-  type: 'filter',
   execute: function(text) {
     // function from https://raw.githubusercontent.com/slackhq/hubot-slack/master/src/slack.coffee compiled to JavaScript
     // this, among other things, removes angle brackets from URLs that the Slack API passes over to this client

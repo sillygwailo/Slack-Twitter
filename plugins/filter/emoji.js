@@ -4,7 +4,6 @@ var Emoji = require('emoji-data');
 var filter = {
   name: 'emoji',
   description: 'Replace emoji codes with the Unicode emoji.',
-  type: 'filter',
   execute: function(text) {
     text = text.replace(/(:\w+:)/g, (function(_this) {
       return function(match, emoji_code) {
