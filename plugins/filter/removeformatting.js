@@ -1,6 +1,6 @@
-var plugin = require(__dirname + '/../plugins.js');
+var filters = require(__dirname + '/../filters.js');
 
-action = {
+filter = {
   name: 'removeformatting',
   description: 'Use Slack\'s own alorithm to remove formatting from a message',
   type: 'filter',
@@ -48,4 +48,4 @@ action = {
   }
 }
 
-plugin.addAction(action);
+filters.addFilter(filter);

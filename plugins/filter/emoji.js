@@ -1,7 +1,7 @@
-var plugin = require(__dirname + '/../plugins.js');
+var filters = require(__dirname + '/../filters.js');
 var Emoji = require('emoji-data');
 
-var action = {
+var filter = {
   name: 'emoji',
   description: 'Replace emoji codes with the Unicode emoji.',
   type: 'filter',
@@ -17,4 +17,4 @@ var action = {
   }
 };
 
-plugin.addAction(action);
+filters.addFilter(filter);

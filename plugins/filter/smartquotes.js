@@ -1,6 +1,6 @@
-var plugin = require(__dirname + '/../plugins.js');
+var filters = require(__dirname + '/../filters.js');
 
-var action = {
+var filter = {
   name: 'smartquotes',
   description: 'Replace quotes with smartquotes.',
   type: 'filter',
@@ -15,4 +15,4 @@ var action = {
   }
 };
 
-plugin.addAction(action);
+filters.addFilter(filter);
