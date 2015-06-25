@@ -17,7 +17,7 @@ Or you could deploy it to Heroku by clicking the button:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/sillygwailo/Slack-Twitter)
 
-**You still need to follow steps #1-4 in the above instructions before clicking the button.**
+**You still need to follow steps #1-6 in the above instructions before clicking the button.**
 
 Warning: All messages under 140 characters will get posted to Twitter. Only use a channel designated to post tweets from.
 
