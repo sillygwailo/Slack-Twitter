@@ -2,8 +2,8 @@ Installation
 ====
 
 1. Create two channels in Slack.
-  1. Name the channel for your timeline something obvious like 'twitter_timeiline' 
-  2. Name the channel for posting to Twitter something obvious like 'twitter_post'
+  1. Name the channel for your timeline something obvious like 'twitter_timeline'.
+  2. Name the channel for posting to Twitter something obvious like 'twitter_post'.
 2. Get a Slack bot account. Visit https://my.slack.com/services/new and under "DIY Integrations & Customizations" click the "Add" button. Once you create this bot (name it something obvious like "twitter_bot") you will get an API token.
 2. Invite the bot to the channels you created in step #1. To do that, go to each channel and, in the top
     drop-down for the channel, click "Invite others to this channel..." and select your bot created in
