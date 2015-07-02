@@ -28,6 +28,10 @@ Cl.login();
 Cl.on('open', function() {
 
 });
+Cl.on('close', function () {
+  console.log('Connection closed, retrying...');
+  Cl.reconnect();
+});
 
 T.stream('user', function(stream) {
   stream.on('data', function(tweet) {
