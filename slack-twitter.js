@@ -85,7 +85,7 @@ Cl.on('star_removed', function(event) {
 });
 Cl.on('message', function(message) {
   the_channel = Cl.getChannelByName(slackOptions.post_channel);
-  if (message.channel == the_channel.id && (message.subtype != 'message_changed' && message.subtype != 'bot_message')) {
+  if (message.channel == the_channel.id && (message.subtype != 'message_changed' && message.subtype != 'bot_message' && message.subtype != 'channel_join')) {
     fs.readdir(__dirname + '/plugins/filter', function (error, files) {
       text = message.text;
       files.forEach(function (file) {
