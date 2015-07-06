@@ -23,8 +23,11 @@
     "SLACK_TOKEN": {
       "description": "Token for the bot, available from  https://my.slack.com/services/new and under 'DIY Integrations & Customizations' click the 'Add' button."
     },
-    "SLACK_CHANNEL": {
-      "description": "Channel in Slack to post tweets to and from."
+    "SLACK_POST_CHANNEL": {
+      "description": "Channel in Slack to post tweets from."
+    },
+    "SLACK_TIMELINE_CHANNEL": {
+      "description": "Channel in Slack to post tweets to."
     }
   }
 }
