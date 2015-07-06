@@ -65,7 +65,7 @@ Cl.on('star_added', function(event) {
   if (event.item.type == 'message') {
     path = U.parse(event.item.message.attachments[0].author_link).path.split('/');
     T.post('favorites/create', { id: path[3] }, function(error, data, response) {
-      if (err) {
+      if (error) {
         console.log('Error faving tweet: ' + error);
       }
     });
@@ -76,7 +76,7 @@ Cl.on('star_removed', function(event) {
   if (event.item.type == 'message') {
     path = U.parse(event.item.message.attachments[0].author_link).path.split('/');
     T.post('favorites/destroy', { id: path[3] }, function(error, data, response) {
-      if (err) {
+      if (error) {
         console.log('Error unfaving tweet: ' + error);
       }
     });
