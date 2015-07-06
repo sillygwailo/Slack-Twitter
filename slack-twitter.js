@@ -1,5 +1,5 @@
 var S = require('slack-client');
-var Twit = require('twitter');
+var Twit = require('twit');
 var TwitterText = require('twitter-text');
 var U = require('url');
 
@@ -29,31 +29,32 @@ Cl.on('open', function() {
 
 });
 
-T.stream('user', function(stream) {
-  stream.on('data', function(tweet) {
-    var channel = Cl.getChannelByName(slackOptions.timeline_channel);
-    if (typeof(tweet.retweeted_status) != 'undefined') {
-      channel.send('https://twitter.com/' + tweet.retweeted_status.user.screen_name + '/status/' + tweet.retweeted_status.id_str + ' RT by https://twitter.com/' + tweet.user.screen_name);
-      if (typeof(tweet.retweeted_status.quoted_status_id_str) != 'undefined') {
-        T.get('/statuses/show/' + tweet.retweeted_status.quoted_status_id_str, {}, function(error, quoted_tweet, response) {
-          var channel = Cl.getChannelByName(slackOptions.timeline_channel);
-          channel.send('Quoted tweet inside RT: https://twitter.com/' + quoted_tweet.user.screen_name + '/status/' + quoted_tweet.id_str);
-        });
+stream = T.stream('user');
+
+stream.on('tweet', function(tweet) {
+  var channel = Cl.getChannelByName(slackOptions.timeline_channel);
+  if (typeof(tweet.retweeted_status) != 'undefined') {
+    channel.send('https://twitter.com/' + tweet.retweeted_status.user.screen_name + '/status/' + tweet.retweeted_status.id_str + ' RT by https://twitter.com/' + tweet.user.screen_name);
+    if (typeof(tweet.retweeted_status.quoted_status_id_str) != 'undefined') {
+      T.get('/statuses/show/' + tweet.retweeted_status.quoted_status_id_str, {}, function(error, quoted_tweet, response) {
+        var channel = Cl.getChannelByName(slackOptions.timeline_channel);
+        channel.send('Quoted tweet inside RT: https://twitter.com/' + quoted_tweet.user.screen_name + '/status/' + quoted_tweet.id_str);
+      });
+    }
+  }
+  else {
+    if (typeof(tweet.user) != 'undefined') {
+      channel.send('https://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str)
+      if (typeof(tweet.quoted_status) != 'undefined') {
+        channel.send('Quoted tweet: https://twitter.com/' + tweet.quoted_status.user.screen_name + '/status/' + tweet.quoted_status.id_str);
       }
     }
-    else {
-      if (typeof(tweet.user) != 'undefined') {
-        channel.send('https://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id_str)
-        if (typeof(tweet.quoted_status) != 'undefined') {
-          channel.send('Quoted tweet: https://twitter.com/' + tweet.quoted_status.user.screen_name + '/status/' + tweet.quoted_status.id_str);
-        }
-      }
-    }
-    channel = null;
-  });
-  stream.on('error', function(error) {
-    console.log('Twitter stream error: ' + error);
-  });
+  }
+  channel = null;
+});
+
+stream.on('error', function(error) {
+  console.log('Twitter stream error: ' + error);
 });
 
 Cl.on('star_added', function(event) {
