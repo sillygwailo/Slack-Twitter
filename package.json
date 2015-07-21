@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "emoji-data": "0.2.0",
-    "slack-client": "1.4.0",
+    "slack-client": "https://github.com/sillygwailo/node-slack-client/tarball/ws-0.7.2",
     "twit": "2.1.0",
     "twitter-text": "1.12.0"
   },
