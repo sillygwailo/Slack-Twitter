@@ -84,29 +84,55 @@ Cl.on('star_removed', function(event) {
   }
 });
 Cl.on('message', function(message) {
-  the_channel = Cl.getChannelByName(slackOptions.post_channel);
-  if (message.channel == the_channel.id && (message.subtype != 'message_changed' && message.subtype != 'bot_message' && message.subtype != 'channel_join')) {
-    fs.readdir(__dirname + '/plugins/filter', function (error, files) {
+  post_channel = Cl.getChannelByName(slackOptions.post_channel);
+  if (message.channel != post_channel.id) {
+    return;
+  }
+  if (message.subtype == 'message_changed' || message.subtype == 'channel_join') {
+    console.log("Message type:", message.subtype);
+    return;
+  }
+  if (message.subtype == 'bot_message' && !process.env.ALLOW_INTEGRATIONS) {
+    console.log('Bot message disallowed.');
+    return;
+  }
+  if (typeof(message.user) !== 'undefined') {
+    user = Cl.getUserByID(message.user);
+    if (typeof(user) !== 'undefined' && typeof(user.is_bot) !== 'undefined' && user.is_bot) {
+      console.log("User is a bot.");
+      return;
+    }
+  }
+  fs.readdir(__dirname + '/plugins/filter', function (error, files) {
+    if (typeof(message.text) != 'undefined') {
       text = message.text;
-      files.forEach(function (file) {
-        require(__dirname + '/plugins/filter/' + file);
-      });
-      filters = require(__dirname + '/plugins/filters.js').filters;
-      filters.forEach(function(filter) {
-        text = filter.execute(text);
-      });
-      if (TwitterText.getTweetLength(text) <= 140) {
-        T.post('statuses/update', { status: text }, function(error, data, response) {
-          if (error) {
-            console.log('Posting tweet error: ' + error);
-          }
-        });
-      }
-      else {
-        channel = Cl.getChannelByID(message.channel);
-        channel.send("The tweet was too long! Character count: " + TwitterText.getTweetLength(message.text));
-        channel = null;
-      } // If message longer than 140 character
+    }
+    else if( Object.prototype.toString.call(message.attachments) === '[object Array]' ) { 
+      //http://stackoverflow.com/questions/4775722/check-if-object-is-array
+      text = message.attachments[0].text;
+    }
+    else {
+      console.log("No message text.");
+      return;
+    }
+    files.forEach(function (file) {
+      require(__dirname + '/plugins/filter/' + file);
     });
-  } // Message type.
+    filters = require(__dirname + '/plugins/filters.js').filters;
+    filters.forEach(function(filter) {
+      text = filter.execute(text);
+    });
+    if (TwitterText.getTweetLength(text) <= 140) {
+      T.post('statuses/update', { status: text }, function(error, data, response) {
+        if (error) {
+          console.log('Posting tweet error: ' + error);
+        }
+      });
+    }
+    else {
+      channel = Cl.getChannelByID(message.channel);
+      channel.send("The tweet was too long! Character count: " + TwitterText.getTweetLength(message.text));
+      channel = null;
+    } // If message longer than 140 character
+  });
 });
