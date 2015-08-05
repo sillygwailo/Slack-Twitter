@@ -9,11 +9,16 @@
   },
   "dependencies": {
     "emoji-data": "0.2.0",
-    "slack-client": "1.4.0",
+    "slack-client": "https://github.com/sillygwailo/node-slack-client/tarball/ws-0.7.2",
     "twit": "2.1.0",
-    "twitter-text": "1.12.0"
+    "twitter-text": "1.12.0",
+    "grunt": "0.4.5",
+    "grunt-cli": "0.1.13"
   },
   "scripts": {
     "start": "node slack-twitter.js"
+  },
+  "scripts": {
+    "postinstall": "echo Installing node-slack-client.; cd ./node_modules/slack-client; npm install; ../grunt-cli/bin/grunt prepublish"
   }
 }
