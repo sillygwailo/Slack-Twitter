@@ -1,6 +1,6 @@
 {
   "name": "Slack-Twitter",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A server to post tweets from your timline to a designated Slack channel.",
   "author": "Richard Eriksson <richard@justagwailo.com>",
   "repository" : {
