@@ -3,15 +3,16 @@
   "version": "0.0.5",
   "description": "A server to post tweets from your timline to a designated Slack channel.",
   "author": "Richard Eriksson <richard@justagwailo.com>",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/sillygwailo/Slack-Twitter.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sillygwailo/Slack-Twitter.git"
   },
   "dependencies": {
+    "@slack/client": "^3.8.1",
     "emoji-data": "0.2.0",
-    "slack-client": "1.5.1",
-    "twit": "2.2.5",
-    "twitter-text": "1.14.0"
+    "grunt": "0.4.5",
+    "twit": "2.2.5 ",
+    "twitter-text": "1.14.3"
   },
   "scripts": {
     "start": "node slack-twitter.js"
