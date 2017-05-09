@@ -138,7 +138,7 @@ rtm.on('message', function(message) {
         });
       }
       else {
-        channel = rtm.dataStore.getChannelByID(message.channel);
+        channel = rtm.dataStore.getChannelById(message.channel);
         web.chat.postMessage(channel.id, "The tweet was too long! Character count: " + TwitterText.getTweetLength(message.text), function(err, res) {
           if (err) {
             console.log('Error:', err);
