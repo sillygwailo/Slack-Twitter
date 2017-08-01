@@ -15,5 +15,9 @@
   },
   "scripts": {
     "start": "node slack-twitter.js"
+  },
+  "engines": {
+    "node": "8.2.1",
+    "npm": "5.3.0"
   }
 }
