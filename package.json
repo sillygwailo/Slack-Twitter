@@ -8,7 +8,7 @@
     "url": "https://github.com/sillygwailo/Slack-Twitter.git"
   },
   "dependencies": {
-    "@slack/client": "4.0.0",
+    "@slack/client": "4.5.0",
     "emoji-data": "0.2.0",
     "twit": "2.2.9",
     "twitter-text": "1.14.7"
